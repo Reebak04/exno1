@@ -20,28 +20,36 @@ STEP 5: Remove outliers using IQR
 
 STEP 6: Use zscore of to remove outliers
 
-# Coding and Output:
+# Coding and Output
+## PROGRAM:
 ```
-import pandas as pd 
-df=pd.read_csv("/content/Data_set.csv") 
-print(df)
-df.head(5)
-df.info()
-df.isnull().sum() 
-df['show_name']=df['show_name'].fillna(df['aired_on'].mode()[0]) 
-df['aired_on']=df['aired_on'].fillna(df['aired_on'].mode()[0]) 
-df['original_network']=df['original_network'].fillna(df['aired_on'].mode()[0]) 
-df.head() 
-df['rating']=df['rating'].fillna(df['rating'].mean()) 
-df['current_overall_rank']=df['current_overall_rank'].fillna(df['current_overall_rank'].mean()) 
-df.head() 
-df['watchers']=df['watchers'].fillna(df['watchers'].median()) 
-df.head() 
-df.info() 
-df.isnull().sum()
-```
-![image](https://github.com/Reebak04/exno1/assets/118364993/d5e58e4f-80a4-4122-aba9-4f0a5cecfff3)
-![image](https://github.com/Reebak04/exno1/assets/118364993/6c03e6c8-0b61-40c3-9a2c-c9aa32bf8757)
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+data = pd.read_csv("/content/SAMPLEIDS.csv")
+data.head()
+data = pd.get_dummies(data)
+data.isnull().sum()
+columns_with_null = data.columns[data.isnull().any()]
 
+### VISUALIZATION:
+import seaborn as sns
+plt.figure(figsize=(10,10))
+sns.barplot(columns_with_null)
+plt.title("NULL VALUES")
+plt.show()
+
+### NULL IMPUTATION
+for column in columns_with_null:
+    median = data[column].median()  
+    data[column].fillna(median, inplace=True)
+data.isnull().sum().sum()
+```
 # Result
+
+ ![image](https://github.com/aldrinlijo04/exno1/assets/118544279/2542129d-4099-4b98-8b5e-fd12fedc95d8)
+
+
+![image](https://github.com/aldrinlijo04/exno1/assets/118544279/fd6fe5f9-d90a-4063-bd4b-978cfb6e3b09)
+
 
