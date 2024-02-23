@@ -41,6 +41,7 @@ df.info()
 df.isnull().sum()
 ```
 ![image](https://github.com/Reebak04/exno1/assets/118364993/d5e58e4f-80a4-4122-aba9-4f0a5cecfff3)
+![image](https://github.com/Reebak04/exno1/assets/118364993/6c03e6c8-0b61-40c3-9a2c-c9aa32bf8757)
 
 # Result
 
