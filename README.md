@@ -20,7 +20,27 @@ STEP 5: Remove outliers using IQR
 
 STEP 6: Use zscore of to remove outliers
 
-# Coding and Output
-            <<include your coding and its corressponding output screen shots here>>
+# Coding and Output:
+```
+import pandas as pd 
+df=pd.read_csv("/content/Data_set.csv") 
+print(df)
+df.head(5)
+df.info()
+df.isnull().sum() 
+df['show_name']=df['show_name'].fillna(df['aired_on'].mode()[0]) 
+df['aired_on']=df['aired_on'].fillna(df['aired_on'].mode()[0]) 
+df['original_network']=df['original_network'].fillna(df['aired_on'].mode()[0]) 
+df.head() 
+df['rating']=df['rating'].fillna(df['rating'].mean()) 
+df['current_overall_rank']=df['current_overall_rank'].fillna(df['current_overall_rank'].mean()) 
+df.head() 
+df['watchers']=df['watchers'].fillna(df['watchers'].median()) 
+df.head() 
+df.info() 
+df.isnull().sum()
+```
+![image](https://github.com/Reebak04/exno1/assets/118364993/d5e58e4f-80a4-4122-aba9-4f0a5cecfff3)
+
 # Result
-          <<include your Result here>>
+
